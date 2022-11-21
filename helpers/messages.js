@@ -13,23 +13,23 @@ const showMenu = () => {
             console.log( `${(menuOption.option).toString().green}. ${menuOption.label}` );
         }
     
-        /**
-         * Require information from the terminal
-         */
+        /***
+         **** Require information from the terminal ****
+         ***/
         const readLine = require( 'readline' ).createInterface({
             input: process.stdin,
             output: process.stdout
         });
     
         readLine.question( 'Select an option: ', (opt) => {
-            readLine.close(); // closes de terminal 
+            readLine.close();
             resolve(opt);
         } );
 
     } )
 }
 
-const pause = () => {
+const pause = () => { z
 
     return new Promise( resolve => {
         const readLine = require( 'readline' ).createInterface({
@@ -37,8 +37,8 @@ const pause = () => {
             output: process.stdout
         });
     
-        readLine.question( `Press ${'ENTER'.green} to continue\n`, (opt) => {
-            readLine.close(); // closes de terminal 
+        readLine.question( `Press ${'ENTER'.green} to continue...\n`, (opt) => {
+            readLine.close();
             resolve();
         } );
 
