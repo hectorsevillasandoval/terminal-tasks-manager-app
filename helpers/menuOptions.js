@@ -1,31 +1,31 @@
 const menu = [
     {
         value: 1,
-        name: '1. Create Task'
+        name: 'Create Task'
     },
     {
         value: 2,
-        name: '2. List Tasks'
+        name: 'List Tasks'
     },
     {
         value: 3,
-        name: '3. List completed tasks'
+        name: 'List completed tasks'
     },
     {
         value: 4,
-        name: '4. List pending tasks'
+        name: 'List pending tasks'
     },
     {
         value: 5,
-        name: '5. Complete tasks'
+        name: 'Complete tasks'
     },
     {
         value: 6,
-        name: '6. Remove tasks'
+        name: 'Remove tasks'
     },
     {
         value: 0,
-        name: '0. Exit'
+        name: 'Exit'
     },
 ];
 

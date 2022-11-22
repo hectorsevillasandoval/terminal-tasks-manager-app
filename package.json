@@ -19,6 +19,7 @@
   "homepage": "https://github.com/hectorsevillasandoval/terminal-tasks-manager-app#readme",
   "dependencies": {
     "colors": "^1.4.0",
-    "inquirer": "^8.2.5"
+    "inquirer": "^8.2.5",
+    "uuid": "^9.0.0"
   }
 }
