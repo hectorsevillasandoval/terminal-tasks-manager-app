@@ -9,7 +9,7 @@ const main = async () => {
     const tasks = new Tasks();
 
     const DBtasks = readDB();
-
+    
     if( DBtasks ){
         tasks.loadTasksFromDB( DBtasks );
     }
@@ -26,12 +26,18 @@ const main = async () => {
                 console.log(`The task ${taskId} has been created.`);
                 break;
             case 2:
-                console.log( tasks.listTasks() );
+                tasks.listTasks();
+                break;
+            case 3:
+                tasks.listCompleteIncompleteTasks( true );
+                break;
+            case 4:
+                tasks.listCompleteIncompleteTasks( false );
                 break;
             case 0:
-                saveDB( Object.values( tasks._list ) );
                 break;
         }   
+        saveDB( Object.values( tasks._list ) );
         await pause();
     } while( opt !== 0 );
 

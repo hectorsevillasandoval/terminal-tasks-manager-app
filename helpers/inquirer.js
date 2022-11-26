@@ -16,7 +16,7 @@ const questions = [
 ];
 
 const inquirerMenu = async () => {
-    //console.clear();
+    console.clear();
     console.log('='.repeat(20).green);
     console.log('Tasks Manager App'.white);
     console.log('='.repeat(20).green);

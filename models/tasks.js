@@ -1,6 +1,5 @@
-const fs = require('node:fs');
+require('colors');
 const Task = require('./task');
-
 
 class Tasks {
     
@@ -23,7 +22,29 @@ class Tasks {
     }
 
     listTasks(){
-        return Object.values( this._list );
+        let index = 0;
+        console.log('\n');
+        for( const itemTask of Object.values( this._list )){
+            const listIndex = `${++index}.`;
+            const listIndexFormatted = !itemTask.completed ? listIndex.red : listIndex.green;
+            console.log(`\t${listIndexFormatted} ${itemTask.description} :: ${ !itemTask.completed ? 'Pending'.red : 'Completed'.green}`);
+        }
+        console.log('\n');
+
+        return true;
+    }
+
+    listCompleteIncompleteTasks( completed = false ) {
+        let index = 0;
+        console.log('\n');
+        for( const itemTask of Object.values( this._list ).filter( task => !completed ? !task.completed : task.completed ) ){
+            const listIndex = `${++index}.`;
+            const listIndexFormatted = listIndex.green;
+            console.log(`\t${listIndexFormatted} ${itemTask.description} :: ${!completed ? '⚠️' : '✅'}`);
+        }
+        console.log('\n');
+
+        return true;
     }
 
 
