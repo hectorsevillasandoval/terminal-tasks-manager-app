@@ -1,5 +1,5 @@
 const { saveDB, readDB } = require('./helpers/db.helper');
-const { inquirerMenu, pause, readInput } = require('./helpers/inquirer');
+const { inquirerMenu, pause, readInput, listTasksToRemove, confirm } = require('./helpers/inquirer');
 const Tasks = require('./models/tasks');
 
 require( 'colors' );
@@ -33,6 +33,13 @@ const main = async () => {
                 break;
             case 4:
                 tasks.listCompleteIncompleteTasks( false );
+                break;
+            case 6:
+                const removeThisID = await listTasksToRemove( Object.values( tasks._list ) );
+                const deleteId = await confirm();
+            
+                if( deleteId ) tasks.removeTask( deleteId );
+                
                 break;
             case 0:
                 break;

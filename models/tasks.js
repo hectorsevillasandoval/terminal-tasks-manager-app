@@ -47,6 +47,14 @@ class Tasks {
         return true;
     }
 
+    removeTask( id = '' ){
+        if( !this._list[id] ){
+            return false;
+        }
+        delete this._list[id];
+        return true;
+    }
+
 
 }
 

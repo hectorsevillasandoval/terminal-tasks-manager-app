@@ -16,7 +16,7 @@ const questions = [
 ];
 
 const inquirerMenu = async () => {
-    console.clear();
+   // console.clear();
     console.log('='.repeat(20).green);
     console.log('Tasks Manager App'.white);
     console.log('='.repeat(20).green);
@@ -57,8 +57,49 @@ const readInput = async ( message ) => {
     return description;
 }
 
+const listTasksToRemove = async ( tasks = [] ) => {
+    const choices = tasks.map( (task, index) => {
+        return {
+            value: task.id,
+            name: `${(index + 1).toString().green}. ${task.description}`
+        };        
+    });
+
+    if( choices.length > 0 ) { 
+        const { removeTask } = await inquirer.prompt([
+            {
+                type: 'list',
+                name: 'removeTask',
+                choices
+            },
+        ]);
+        
+
+        return removeTask;
+    }
+
+    return false;
+    
+};
+
+const confirm = async () => {
+    
+    const { deleteId } = await inquirer.prompt([
+        {
+            type: 'confirm',
+            name: 'deleteId',
+            message: '¿Are you sure?',
+        }
+    ]);
+
+    return deleteId;
+
+};
+
 module.exports = {
     inquirerMenu,
     pause,
-    readInput
+    readInput,
+    listTasksToRemove,
+    confirm
 };
