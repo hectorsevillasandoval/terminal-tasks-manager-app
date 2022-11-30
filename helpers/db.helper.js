@@ -12,7 +12,7 @@ const readDB = () => {
     }
 
     const info = fs.readFileSync( dbFilePath, { encoding: 'utf-8' });
-    //console.log( info.length );
+    
     const data = info ? JSON.parse(info) : [];
 
     return data;

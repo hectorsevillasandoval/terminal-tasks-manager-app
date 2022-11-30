@@ -16,7 +16,7 @@ const questions = [
 ];
 
 const inquirerMenu = async () => {
-   // console.clear();
+    console.clear();
     console.log('='.repeat(20).green);
     console.log('Tasks Manager App'.white);
     console.log('='.repeat(20).green);
@@ -65,6 +65,11 @@ const listTasksToRemove = async ( tasks = [] ) => {
         };        
     });
 
+    choices.unshift({
+        value: 0,
+        name: `${'0.'.green} Cancel`
+    });
+
     if( choices.length > 0 ) { 
         const { removeTask } = await inquirer.prompt([
             {
@@ -80,6 +85,31 @@ const listTasksToRemove = async ( tasks = [] ) => {
 
     return false;
     
+};
+
+const listPendingTasks = async ( tasks = [] ) => {
+    const choices = tasks.map( (task, index) => {
+        return {
+            value: task.id,
+            checked: task.completed,
+            name: `${(index + 1).toString().red}. ${task.description}`
+        };        
+    });
+
+    if( choices.length > 0 ) { 
+        const { pendingTasks } = await inquirer.prompt([
+            {
+                type: 'checkbox',
+                name: 'pendingTasks',
+                choices
+            },
+        ]);
+        
+
+        return pendingTasks;
+    }
+
+    return false;
 };
 
 const confirm = async () => {
@@ -101,5 +131,6 @@ module.exports = {
     pause,
     readInput,
     listTasksToRemove,
-    confirm
+    confirm,
+    listPendingTasks
 };
